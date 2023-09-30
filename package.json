@@ -1,0 +1,29 @@
+{
+  "name": "cartography-data-analysis",
+  "version": "1.0.0",
+  "description": "Based only on JavaScript, run locally the data gathered at Sorbonne Université to compare ground truth with GPS signal and with optimization code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:prod": "webpack --mode production",
+    "build:dev": "webpack --mode development"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "buffers": "^0.1.1",
+    "graphml-js": "^0.4.0",
+    "leaflet": "^1.9.4",
+    "lodash": "^4.17.21",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "stream-browserify": "^3.0.0",
+    "timers-browserify": "^2.0.12"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "keywords": []
+}
