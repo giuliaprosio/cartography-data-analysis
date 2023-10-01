@@ -20,7 +20,7 @@ window.onload = async () => {
     window.layer = layerGraph;
 
     parseGraph();
-    setInterval(parseGraph, 3000); //5 seconds
+    setInterval(parseGraph, 1000); //5 seconds
     window.parseGraph = parseGraph;
 
     async function parseGraph() {
@@ -74,7 +74,7 @@ window.onload = async () => {
                 popupContent += '<br>' + "Associated router: " + absNode.associatedRouterName + '<br>' + "Router ip: " + absNode.associateRouterIP;
 
                 let c = ll.drawCircle(absNode.lat, absNode.lng, "red", 1.5, 1, 2);  //red
-                let cAcc = ll.drawCircle(absNode.lat, absNode.lng, "red", absNode.acc, 0.5, 0);
+                let cAcc = ll.drawCircle(absNode.lat, absNode.lng, "red", absNode.acc, 0.35, 0);
 
                 c.bindPopup(popupContent).openPopup();
                 c.addTo(layerGraph);
