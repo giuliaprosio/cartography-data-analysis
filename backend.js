@@ -1,6 +1,6 @@
 import graphml from "graphml-js";
 
-export async function getGPSLastSeen() {
+/*export async function getGPSLastSeen() {
    
     let gpsLastSeenJSON = await fetch("./gpsPompier.json", {
         method: "GET",
@@ -9,7 +9,7 @@ export async function getGPSLastSeen() {
     let gpsLastSeen = JSON.parse(await gpsLastSeenJSON.text());
 
     return gpsLastSeen;
-}
+} */
 
 let currentIndex = 0;
 
@@ -20,7 +20,6 @@ async function getCompleteJson(){
     });
 
     let total = JSON.parse(await totalJSON.text());
-    console.log("total: ", total);
     return total;
 }
 
@@ -28,7 +27,7 @@ async function getCompleteJson(){
 export async function getCurrentJson() {
    
     let total = await getCompleteJson();
-    console.log("total2: ", total);
+    
     let currentJson = total[currentIndex];
     console.log("current graph: ", currentJson);
     currentIndex ++;

@@ -104,7 +104,7 @@ export function logicLocalization(gps, graph) {
 
     }
 
-    console.log("edges to be drawn: ", absGraph.edges);
+    //console.log("edges to be drawn: ", absGraph.edges);
 
 
 
