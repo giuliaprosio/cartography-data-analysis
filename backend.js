@@ -11,6 +11,31 @@ export async function getGPSLastSeen() {
     return gpsLastSeen;
 }
 
+let currentIndex = 0;
+
+async function getCompleteJson(){
+    
+    let totalJSON = await fetch("./jsonformatter.json", {
+        method: "GET",
+    });
+
+    let total = JSON.parse(await totalJSON.text());
+    console.log("total: ", total);
+    return total;
+}
+
+
+export async function getCurrentJson() {
+   
+    let total = await getCompleteJson();
+    console.log("total2: ", total);
+    let currentJson = total[currentIndex];
+    console.log("current graph: ", currentJson);
+    currentIndex ++;
+
+    return currentJson;
+}
+
 /*export async function getGPSRecords() {
 
     let gpsRecordsJSON = await fetch("/gpsAllRecords", {

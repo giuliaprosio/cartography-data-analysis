@@ -38,9 +38,9 @@ export function drawEdge(edgeSourceLat, edgeSourceLng, edgeDestLat, edgeDestLng)
 
     var polyl = new L.Polyline([pointA, pointB], {
         color: 'black',
-        weight: 3,
+        weight: 2,
         opacity: 0.7,
-        smoothFactor: 1
+        smoothFactor: 0.5
     });
 
     return polyl;

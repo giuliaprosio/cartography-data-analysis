@@ -20,19 +20,22 @@ window.onload = async () => {
     window.layer = layerGraph;
 
     parseGraph();
-    setInterval(parseGraph, 5000); //5 seconds
+    setInterval(parseGraph, 3000); //5 seconds
     window.parseGraph = parseGraph;
 
     async function parseGraph() {
 
         navigator.geolocation.watchPosition(successCallback, errorCallback);
         
-        let gpsLastSeen = await backend.getGPSLastSeen();
-        let graph = await backend.getGraph();
+        //let gpsLastSeen = await backend.getGPSLastSeen();
+        //let graph = await backend.getGraph();
+
+        let completeGraph = await backend.getCurrentJson();
+
         //let serverIP = await backend.getServerIPAddress();
         //let gpsAllRecords = await backend.getGPSRecords();
-        console.log("gpslastseen: ", gpsLastSeen);
-        console.log("graph: ", graph);
+        //console.log("gpslastseen: ", gpsLastSeen);
+        console.log("graph: ", completeGraph);
         //at this point I have both GPSLastSeen and graphxml
       
         //
@@ -46,14 +49,14 @@ window.onload = async () => {
 
 
         /**NODES */
-        let [absGraph, dropRouter] = loc.logicLocalization(gpsLastSeen, graph);
-        console.log("to drop: ", dropRouter);
+        //let [absGraph, dropRouter] = loc.logicLocalization(gpsLastSeen, graph);
+        //console.log("to drop: ", dropRouter);
 
-        listGraph.push(Object.assign({}, absGraph));
+        listGraph.push(Object.assign({}, completeGraph)); //absGraph
         console.log("listgraph ", listGraph);
 
         localStorage.setItem('list', JSON.stringify(listGraph));
-
+        let absGraph = completeGraph;
 
 
         //--------------------------
@@ -91,7 +94,7 @@ window.onload = async () => {
 
         }
 
-        console.log("dropRouter: ", dropRouter);
+        /*console.log("dropRouter: ", dropRouter);
 
         for (let m = 0; m < dropRouter.length; m++) {
             let nodeToDrop = dropRouter[m];
@@ -123,7 +126,7 @@ window.onload = async () => {
             }
 
 
-        }
+        } */
 
 
         /**EDGES */
@@ -151,6 +154,7 @@ window.onload = async () => {
             }
 
             //if(edge.rssi > -100 && otherEdge.rssi > -100){
+            console.log("edge to draw: ", edge);
             let polyl = ll.drawEdge(edge.sourceLat, edge.sourceLng, edge.destLat, edge.destLng);
 
             if (otherEdge) {
