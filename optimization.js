@@ -25,25 +25,41 @@ export function optimizeGraph(currentGraph){
         }
     }
 
-    let idxToPosition = [];
+    let orderedNodes = [];
     let bestAccuracy = 10000000;
     //RE-ORDER BASED OFF ACCURACY:
     for(let i=0; i<currentGraph.nodes.length; i++){
         if(currentGraph.nodes[i].acc < bestAccuracy){
             bestAccuracy = currentGraph.nodes[i].acc;
-            idxToPosition.unshift(currentGraph.nodes[i]);
+            orderedNodes.unshift(currentGraph.nodes[i]);
         }
         else{
             for(let j=0; j<idxToPosition.length; j++){
-                if(idxToPosition[j].acc < currentGraph.nodes[i].acc) continue;
+                if(orderedNodes[j].acc < currentGraph.nodes[i].acc) continue;
                 else{
-                    idxToPosition.splice(j, 0, currentGraph.nodes[i]);
+                    orderedNodes.splice(j, 0, currentGraph.nodes[i]);
                 }
             }
         }
     }
 
-    console.log("ordered for accuracy: ", idxToPosition);
+    console.log("ordered for accuracy: ", orderedNodes);
+
+    let idxToPosition = [];
+    for(let i=0; i<currentGraph.nodes.length; i++){
+        for(let j=0; j<orderedNodes.length; j++){
+            if(currentGraph.nodes[i].ip === orderedNodes[j].ip) idxToPosition[i] = j;
+        }
+    }
+
+    for(let edge in currentGraph.edges){
+        for(let i=0; i<idxToPosition.length; i++){
+            if(edge.src === i) edge.src = idxToPosition[i];
+            if(edge.dest === i) edge.dest = idxToPosition[i];
+        }
+    }
+
+    console.log("new ordered edges numbers", currentGraph);
 
     lastGraph = currentGraph;
 

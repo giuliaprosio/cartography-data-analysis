@@ -21,7 +21,7 @@ window.onload = async () => {
     window.layer = layerGraph;
 
     parseGraph();
-    setInterval(parseGraph, 5000); //5 seconds
+    setInterval(parseGraph, 20000); //20 seconds for each iteration
     window.parseGraph = parseGraph;
 
     async function parseGraph() {
@@ -188,7 +188,11 @@ window.onload = async () => {
 
             //if(edge.rssi > -100 && otherEdge.rssi > -100){
             //console.log("edge to draw: ", edge);
-            let polyl = ll.drawEdge(edge.sourceLat, edge.sourceLng, edge.destLat, edge.destLng);
+            let edgeSrcLat = currentOptimizedGraph.nodes[edge.source].lat;
+            let edgeSrcLng = currentOptimizedGraph.nodes[edge.source].lng;
+            let edgeDestLat = currentOptimizedGraph.nodes[edge.dest].lat;
+            let edgeDestLng = currentOptimizedGraph.nodes[edge.dest].lng;
+            let polyl = ll.drawEdge(edgeSrcLat, edgeSrcLng, edgeDestLat, edgeDestLng);
 
             if (otherEdge) {
                 let signal = 'Signal 1: ' + edge.rssi + '<br>' + 'Signal 2: ' + otherEdge.rssi + '<br>';
