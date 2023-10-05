@@ -4,12 +4,12 @@ let layerGraph;
 import L from "leaflet";
 
 export function init(){
-    map = L.map("map").setView([48.83, 2.35], 14);
+    map = L.map("map").setView([48.846696, 2.354834], 19);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: 'abcd',
-        maxZoom: 27
+        maxZoom: 32
     }).addTo(map);
 
     layerGraph = L.layerGroup().addTo(map);
@@ -39,7 +39,7 @@ export function drawEdge(edgeSourceLat, edgeSourceLng, edgeDestLat, edgeDestLng)
     var polyl = new L.Polyline([pointA, pointB], {
         color: 'black',
         weight: 2,
-        opacity: 0.7,
+        opacity: 1,
         smoothFactor: 0.5
     });
 
