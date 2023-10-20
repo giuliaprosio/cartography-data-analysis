@@ -8,10 +8,13 @@ Based on JavaScript, runs locally the data gathered at Sorbonne Université to c
 NodeJS + NPM
 
 ## Build
-Build frontend inside the cartography application folder:
+Create folder out/static in your directory. Build frontend inside the cartography application folder:
 ```
 npm run:build dev
 ```
+
+This way the bundle.js merging all the JS files will be dynamically created there.
+
 ## Start the application locally 
 Using live-server, change folder inside 
 ```
