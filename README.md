@@ -4,6 +4,10 @@ Front-end of a cartography application to map and update the position of the nod
 
 Based on JavaScript, runs locally the data gathered at Sorbonne Université to compare ground truth with GPS signal only algorithm  and with optimization code.
 
+Analysis of the data gathered on different scenarios and development of the optimization algorithm. 
+
+Whole application can be found in repository [cartography]{https://github.com/giuliaprosio/cartography}. 
+
 ## Dependencies
 NodeJS + NPM
 
