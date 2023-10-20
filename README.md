@@ -6,7 +6,7 @@ Based on JavaScript, runs locally the data gathered at Sorbonne Université to c
 
 Analysis of the data gathered on different scenarios and development of the optimization algorithm. 
 
-Whole application can be found in repository [cartography]{https://github.com/giuliaprosio/cartography}. 
+Whole application can be found in repository [cartography](https://github.com/giuliaprosio/cartography) . 
 
 ## Dependencies
 NodeJS + NPM
